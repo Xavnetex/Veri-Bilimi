@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veri Bilimi ve Analitiği – Çalışma Sitesi</title>
+<style>
+:root{--bg:#f4f6fa;--card:#fff;--ink:#14213d;--mut:#5b6785;--line:#dde2ee;--ok:#12805c;--bad:#c23b3b;--c5:#0e8f7e;--c6:#6c47c9;--c8:#d9722b;--ac:#2a5bd7}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1524;--card:#18203a;--ink:#e8ecf7;--mut:#9aa6c4;--line:#2a3558;--ok:#43c08f;--bad:#ef7b7b;--ac:#7fa2ff;--c5:#35c4b0;--c6:#a58cf0;--c8:#f0a063}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.25;margin:.2em 0 .5em}
+a{color:var(--ac)}
+header{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;align-items:center;padding:.8rem 1.2rem;border-bottom:1px solid var(--line);background:var(--card);position:sticky;top:0;z-index:5}
+header b{font-family:Georgia,serif;font-size:1.1rem;margin-right:auto}
+header a{text-decoration:none;color:var(--mut);font-weight:600}
+header a.on{color:var(--ink);border-bottom:2px solid var(--ac)}
+main{max-width:820px;margin:0 auto;padding:1.5rem 1.2rem 4rem}
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--cc,var(--ac));border-radius:8px;padding:1rem 1.1rem}
+.card h3{margin-top:0}
+.btns{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem}
+.btn{display:inline-block;padding:.5rem .9rem;border-radius:6px;border:1px solid var(--cc,var(--ac));background:transparent;color:var(--ink);font:inherit;font-weight:600;text-decoration:none;cursor:pointer}
+.btn.f{background:var(--cc,var(--ac));color:#fff}
+.btn:focus-visible,select:focus-visible,.opt:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+.hero{padding:1.2rem 0 1.6rem}.hero h1{font-size:2rem}.hero p{color:var(--mut);max-width:60ch}
+.sec{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.2rem 1.2rem 1rem;margin:1rem 0}
+.sec h3{color:var(--cc);margin-top:1rem}
+.sec li{margin:.25rem 0}
+code,pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88rem}
+pre{background:var(--bg);border:1px solid var(--line);padding:.7rem;border-radius:6px;overflow-x:auto}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}
+td,th{border:1px solid var(--line);padding:.4rem .6rem;text-align:left}
+th{background:var(--bg)}
+.toc{display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0}
+.toc a{font-size:.9rem;padding:.2rem .6rem;border:1px solid var(--line);border-radius:99px;text-decoration:none;color:var(--ink)}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin:.6rem 0 1.2rem}
+.bar i{display:block;height:100%;background:var(--cc,var(--ac));width:0;transition:width .25s}
+.opt{display:block;width:100%;text-align:left;margin:.45rem 0;padding:.65rem .8rem;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);font:inherit;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 15%,var(--card))}
+.opt.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 15%,var(--card))}
+.meta{display:flex;gap:1.2rem;flex-wrap:wrap;color:var(--mut);font-weight:600}
+select{font:inherit;padding:.4rem;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.exp{margin-top:.6rem;color:var(--mut)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><b>Veri Bilimi ve Analitiği</b><a href="#/" id="n-home">Ana sayfa</a><a href="#/sonsuz" id="n-inf">Sonsuz test</a></header>
+<main id="app"></main>
+<script>
+const CH={
+5:{t:"Veri Toplama ve Ön İşleme",c:"var(--c5)",s:[
+["Veri kaynakları",`<p><b>Birincil kaynaklar</b> doğrudan gözlem veya ölçümle toplanan özgün verilerdir; yüksek doğruluk sağlar.</p><ul><li><b>Anketler</b>: müşteri memnuniyeti gibi konularda bilgi toplama</li><li><b>Saha çalışmaları</b>: belirli ortamda gözlem ve ölçüm</li><li><b>Sensör verileri</b>: cihaz ve makinelerden gelen ölçümler</li></ul><p><b>İkincil kaynaklar</b> daha önce başkaları tarafından toplanmış verilerdir; daha ucuz ve hızlıdır.</p><ul><li>Açık veri tabanları (Dünya Bankası, Kaggle)</li><li>İstatistiksel raporlar (ör. TÜİK)</li><li>Web verileri</li></ul>`],
+["Veri toplama yöntemleri",`<p><b>Manuel toplama</b>: küçük ve hassas projeler için idealdir, kalite üzerinde tam kontrol sağlar.</p><p><b>Otomatik toplama</b>: büyük ölçekli veri setleri için tercih edilir (web scraping, API’ler).</p><pre>from bs4 import BeautifulSoup
+import requests
+soup = BeautifulSoup(requests.get(url).text, 'html.parser')
+products = soup.find_all('h2', class_='product-title')</pre><p>Dikkat edilecek ilkeler: <b>veri kalitesi, etik kurallar, veri formatı, veri yedekleme</b>.</p><table><tr><th>Kaynak</th><th>Yöntem</th><th>Örnek alan</th></tr><tr><td>Web siteleri</td><td>Web scraping</td><td>E-ticaret analizi</td></tr><tr><td>API’ler</td><td>Otomatik toplama</td><td>Sosyal medya</td></tr><tr><td>Sensörler</td><td>Doğrudan ölçüm</td><td>Akıllı şehir</td></tr><tr><td>Anket</td><td>Manuel toplama</td><td>Müşteri memnuniyeti</td></tr></table>`],
+["Veri temizleme",`<p>Hata düzeltme, eksik verilerle başa çıkma ve anormal değerleri ele alma işlemleridir.</p><pre>df = df.dropna()                          # eksik satırları çıkar
+df['age'] = df['age'].fillna(df['age'].mean())
+df = df[df['age'] > 0]                    # mantık kontrolü
+df['date'] = pd.to_datetime(df['date'])   # tip düzeltme</pre>`],
+["Eksik verilerin işlenmesi",`<p>Eksik veri türleri:</p><ul><li><b>MCAR</b>: eksiklik tamamen rastgele, diğer gözlemlerle ilişkisiz</li><li><b>MAR</b>: eksiklik diğer gözlemlerle ilişkili, eksik değerin kendisiyle değil</li><li><b>MNAR</b>: eksiklik, eksik olan verinin kendisiyle ilişkili</li></ul><p>Yöntemler: (1) çıkarma (oran düşükse), (2) ortalama/medyan/mod ile doldurma, (3) ileri/geri doldurma (zaman serileri), (4) KNN veya regresyonla tahmin.</p><pre>df['temperature'] = df['temperature'].fillna(method='ffill')
+from sklearn.impute import KNNImputer
+df_filled = KNNImputer(n_neighbors=3).fit_transform(df)</pre>`],
+["Aykırı değerlerin yönetimi",`<p><b>Z-Score</b>: gözlemin ortalamadan kaç standart sapma uzakta olduğunu verir (genelde |z| &lt; 3 tutulur).</p><p><b>IQR</b>: %25 ve %75’lik dilimler (Q1, Q3) arasındaki fark. Sınırlar: Q1 − 1.5·IQR ve Q3 + 1.5·IQR.</p><pre>Q1 = df['value'].quantile(0.25); Q3 = df['value'].quantile(0.75)
+IQR = Q3 - Q1
+df = df[(df['value'] &gt;= Q1-1.5*IQR) &amp; (df['value'] &lt;= Q3+1.5*IQR)]</pre><p>Görselleştirme: kutu grafiği (box plot), histogram. Başa çıkma: çıkarma, dönüştürme (Winsorization, log), veya önemli bilgi taşıyorsa tutma.</p>`],
+["Veri hazırlama",`<ul><li><b>Veri dönüşümü</b>: kategorik kodlama (<code>pd.get_dummies</code> ile one-hot), tarihi yıl/ay/güne ayırma</li><li><b>Min-Max normalizasyonu</b>: değerleri [0, 1] aralığına getirir</li><li><b>Standartlaştırma</b>: ortalama 0, standart sapma 1</li><li><b>Özellik mühendisliği</b>: yeni özellik üretme (ör. indirim oranı)</li><li><b>Özellik seçimi</b>: önemsiz özellikleri çıkarma; hızlandırır, aşırı uyumu önler</li></ul><p><b>Vaka (sağlık):</b> eksik kolesterol medyanla dolduruldu, yaşı 0 olan satırlar çıkarıldı, kan basıncı aykırıları Z-Score ile bulunup Winsorization ile dönüştürüldü, veriler Min-Max ile ölçeklendi.</p>`]]},
+6:{t:"Veri Madenciliği",c:"var(--c6)",s:[
+["Veri madenciliği nedir?",`<p>Büyük veri yığınlarındaki gizli ve anlamlı bilgileri keşfetmek için istatistik, matematik ve yapay zekâ tekniklerini birleştiren süreçtir. Ham veriyi anlamlı bilgiye dönüştürür.</p><p>Süreç: <b>Veri toplama → Veri temizleme → Veri dönüştürme → Modelleme ve analiz → Sonuçların değerlendirilmesi</b>.</p><p>Kesişen disiplinler: bilgisayar bilimi, istatistik, makine öğrenimi, veri tabanı yönetimi, matematik, iş zekâsı, yapay zekâ.</p>`],
+["CRISP-DM",`<p>Veri madenciliği projeleri için yaygın metodoloji (Cross-Industry Standard Process for Data Mining). Altı aşama:</p><ol><li><b>İş anlayışı</b></li><li><b>Veri anlayışı</b></li><li><b>Veri hazırlama</b></li><li><b>Modelleme</b></li><li><b>Değerlendirme</b></li><li><b>Dağıtım (deployment)</b></li></ol>`],
+["Teknikler",`<ul><li><b>Sınıflandırma</b>: etiketli veriyle kategorilere ayırma (denetimli). Ör. spam filtresi, hastalık teşhisi. Algoritmalar: karar ağaçları, SVM, lojistik regresyon, Naive Bayes.</li><li><b>Kümeleme</b>: etiketsiz veriyi benzerliğe göre gruplama (denetimsiz). Ör. müşteri segmentasyonu. Algoritmalar: K-Ortalamalar, DBSCAN, hiyerarşik kümeleme.</li><li><b>Birliktelik kuralları</b>: sık birlikte görülen öğeler. Ör. market sepeti analizi. Algoritmalar: Apriori, FP-Growth. Metrikler: destek, güven, kaldıraç.</li><li><b>Regresyon</b>: ilişkileri modelleyip sayısal tahmin (ev fiyatı).</li><li><b>Anomali tespiti</b>: normalden sapmaları bulma (dolandırıcılık).</li></ul>`],
+["Algoritmalar ve araçlar",`<ul><li><b>Karar ağaçları</b>: veriyi dallara ayırır</li><li><b>KNN</b>: benzerliklere göre gruplar</li><li><b>SVM</b>: en iyi ayırma düzlemini bulur</li><li><b>Apriori</b>: sık öğe kümelerini bulur</li><li><b>K-means</b>: veriyi K kümeye gruplar</li><li><b>Yapay sinir ağları</b>: karmaşık ilişkileri öğrenir</li></ul><p>Araçlar: Python (Pandas, NumPy, scikit-learn), R, RapidMiner, Weka, SAS Enterprise Miner.</p>`],
+["Uygulama alanları",`<ul><li><b>Perakende</b>: market sepeti analizi, çapraz satış</li><li><b>Finans</b>: dolandırıcılık tespiti, risk yönetimi</li><li><b>Sağlık</b>: hastalık tahmini, tedavi planlama</li><li><b>Eğitim</b>: öğrenci performansı izleme, kişiselleştirilmiş eğitim</li><li><b>Sosyal medya</b>: duygu analizi, içerik tavsiyesi</li><li><b>İmalat</b>: tahmine dayalı bakım, kalite kontrol</li><li><b>Lojistik</b>: rota optimizasyonu, talep tahmini</li><li><b>Enerji/çevre</b>: tüketim analizi, çevresel izleme</li></ul>`]]},
+8:{t:"Büyük Veri ve Analitiği",c:"var(--c8)",s:[
+["Büyük veri ve 5V",`<p>Geleneksel yöntemlerle işlenmesi zor olan büyük, hızlı ve çeşitli veri kümeleridir. Veri yapılandırılmış (tablo), yapılandırılmamış (metin, görüntü) veya yarı yapılandırılmış (JSON, XML) olabilir.</p><ol><li><b>Hacim (Volume)</b>: verinin miktarı (petabayt, exabayt)</li><li><b>Hız (Velocity)</b>: verinin ne kadar hızlı oluşturulup işlendiği</li><li><b>Çeşitlilik (Variety)</b>: farklı format ve kaynaklar</li><li><b>Doğruluk (Veracity)</b>: verinin güvenilirliği; sonuçların doğruluğunu etkiler</li><li><b>Değer (Value)</b>: doğru işlenince işletmeye sağladığı değer</li></ol><p>3V = Hacim, Hız, Çeşitlilik.</p>`],
+["Analitik süreci ve kaynaklar",`<p>Süreç: <b>Veri toplama → Veri depolama (Hadoop, Spark, bulut) → Veri işleme (ETL) → Veri analizi (ML, yapay zekâ, istatistik) → Görselleştirme (dashboard)</b>.</p><p>ETL = Extract, Transform, Load.</p><p>Kaynaklar: sosyal medya, sensör ve IoT, kurumsal veriler (CRM, ERP), sağlık verileri, e-ticaret verileri.</p>`],
+["Hadoop",`<p>Büyük veriyi dağıtılmış ortamda depolayan ve işleyen açık kaynaklı yazılım.</p><ul><li><b>HDFS</b>: veriyi dağıtılmış şekilde saklar; dosyaları bloklara bölüp farklı düğümlere dağıtır</li><li><b>MapReduce</b>: paralel işleme; Map (işleme) ve Reduce (özetleme)</li><li><b>YARN</b>: kaynak yönetimi ve iş zamanlaması</li></ul>`],
+["Spark",`<p>Bellek içi (in-memory) işleme sayesinde Hadoop’a kıyasla çok daha hızlı, açık kaynaklı platform.</p><ul><li><b>Spark Core</b>, <b>Spark SQL</b>, <b>Spark Streaming</b> (gerçek zamanlı), <b>MLlib</b> (makine öğrenimi), <b>GraphX</b> (graf analizi)</li></ul><table><tr><th>Özellik</th><th>Hadoop</th><th>Spark</th></tr><tr><td>Hız</td><td>Disk tabanlı, yavaş</td><td>Bellek içi, çok hızlı</td></tr><tr><td>İşleme</td><td>Daha büyük setler</td><td>Gerçek zamanlı</td></tr><tr><td>Kolaylık</td><td>Karmaşık</td><td>Kullanıcı dostu</td></tr><tr><td>Alan</td><td>Büyük ölçekli analiz</td><td>Hızlı analiz</td></tr></table>`],
+["Diğer araçlar ve uygulamalar",`<ul><li><b>NoSQL</b> (MongoDB, Cassandra): yapılandırılmamış veri</li><li><b>Tableau</b>: görselleştirme · <b>Apache Kafka</b>: gerçek zamanlı veri akışı · <b>Google BigQuery</b>: bulut tabanlı analiz</li><li><b>Bulut</b>: AWS, Google Cloud, Azure</li></ul><p>Alanlar: sağlık, finans, perakende, enerji, üretim, ulaşım, akıllı şehirler. Zorluklar: veri güvenliği, işleme kapasitesi, veri kalitesi.</p>`]]}
+};
+/* Kitap sonu soruları: [soru,[şıklar],doğru index] */
+const BQ={
+5:[["Veri toplama sürecinde kullanılan birincil veri kaynakları arasında hangisi yer alır?",["Web scraping","Açık veri tabanları","Saha çalışmaları","İstatistiksel raporlar","Veri analiz platformları"],2],
+["Hangi veri toplama yöntemi büyük ölçekli veri setleri için daha uygundur?",["Manuel veri toplama","Anket ve görüşmeler","Otomatik veri toplama","Saha çalışmaları","Telefonla bilgi alma"],2],
+["Aşağıdakilerden hangisi eksik verilerle başa çıkma yöntemlerinden biri değildir?",["Eksik satırların çıkarılması","Eksik değerlerin ortalama ile doldurulması","Eksik verilerin görselleştirilmesi","Gelişmiş tahmin algoritmaları kullanımı","Z-Score ile eksik değerleri bulma"],4],
+["Aykırı değerleri belirlemek için kullanılan yöntemlerden biri olan IQR nedir?",["Bir veri setindeki en küçük ve en büyük değer arasındaki fark","Verilerin ortalamadan sapmalarını ölçen bir yöntem","%25 ve %75’lik dilimler arasındaki fark","Verilerin sayısal olarak sıralanması","Belirli bir özellikteki hataları hesaplama yöntemi"],2],
+["Hangi veri kaynağı birincil veri kaynaklarına örnek oluşturur?",["Dünya Bankası veritabanı","TÜİK raporları","Bir araştırma ekibinin yaptığı saha ölçümleri","Kaggle veri setleri","Bir haber sitesinden alınan fiyat bilgileri"],2]],
+6:[["Veri madenciliği sürecinde aşağıdaki adımlardan hangisi ilk sırada yer alır?",["Veri temizleme","Veri toplama","Modelleme ve analiz","Sonuçların değerlendirilmesi","Veri görselleştirme"],1],
+["Aşağıdakilerden hangisi veri madenciliğinde kullanılan bir model türü değildir?",["Sınıflandırma","Kümeleme","Anomali tespiti","Dönüşüm kuralları","Regresyon"],3],
+["CRISP-DM metodolojisinin ikinci aşaması aşağıdakilerden hangisidir?",["Veri temizleme","Veri anlama","Modelleme","İş anlayışı","Sonuçların dağıtımı"],1],
+["Market sepeti analizi için aşağıdaki veri madenciliği tekniklerinden hangisi kullanılır?",["Sınıflandırma","Kümeleme","Regresyon","Birliktelik kuralları","Anomali tespiti"],3],
+["Veri madenciliği sonuçlarının anlaşılmasını ve sunulmasını kolaylaştıran araç hangisidir?",["Büyük veri analitiği","Veri tabanı yönetim sistemleri","Yapay zekâ","Veri görselleştirme","Matematiksel optimizasyon"],3]],
+8:[["Büyük veri kavramı aşağıdaki hangi özellikler ile tanımlanır?",["Hacim, Hız, Çeşitlilik, Doğruluk, Değer","Güvenlik, Maliyet, İşlem Gücü","Ölçeklenebilirlik, Erişilebilirlik, Kullanıcı Dostu Olma","Kapasite, Kullanılabilirlik, Performans","Hacim, Çözünürlük, Enerji Verimliliği"],0],
+["“Hız” (Velocity), büyük veri kavramında neyi ifade eder?",["Verinin ne kadar güvenilir olduğunu","Verinin çeşitliliğini ve formatlarını","Verinin hangi platformda saklandığını","Verinin ne kadar hızlı oluşturulup işlendiğini","Verinin görselleştirilme sürecini"],3],
+["Büyük verinin doğruluğu (Veracity) neden önemlidir?",["Verilerin boyutunu artırır.","Analiz sonuçlarının güvenilirliğini doğrudan etkiler.","Veriyi daha hızlı işlemeye olanak tanır.","Yalnızca yapılandırılmış verilerle çalışmayı sağlar.","Maliyet tasarrufu sağlar."],1],
+["Hadoop’un HDFS bileşeni ne yapar?",["Gerçek zamanlı veri akışlarını işler.","Makine öğrenmesi modelleri çalıştırır.","Veriyi dağıtılmış bir şekilde saklar.","Görselleştirme panelleri oluşturur.","Yalnızca yapılandırılmış veriler üzerinde çalışır."],2],
+["Spark’ın bellek içi (in-memory) veri işleme yeteneği hangi avantajı sağlar?",["Veriyi daha az enerji tüketerek işler.","Daha hızlı ve gerçek zamanlı veri işleme sağlar.","Daha büyük veri kümelerini işleyebilmesini sağlar.","Veriyi fiziksel depolama birimlerinde yedekler.","Sadece yapılandırılmamış veri setleriyle çalışır."],1]]
+};
+/* Sonsuz test için bilgi bankası: [bölüm, kavram, tanım] */
+const F=[
+[5,"Birincil veri","Doğrudan gözlem veya ölçümle toplanan özgün veri"],
+[5,"İkincil veri","Daha önce başkaları tarafından toplanmış veri"],
+[5,"Web scraping","Programlama diliyle web sitelerinden veri çıkarma"],
+[5,"API","Belirli bir platformdan veri almak için kullanılan arayüz"],
+[5,"Manuel veri toplama","Küçük ve hassas projeler için ideal, kalite üzerinde tam kontrol sağlayan yöntem"],
+[5,"MCAR","Eksikliğin tamamen rastgele olduğu ve diğer gözlemlerle ilişkisiz olduğu eksik veri türü"],
+[5,"MAR","Eksikliğin diğer gözlemlerle ilişkili, ancak eksik değerin kendisiyle ilişkisiz olduğu eksik veri türü"],
+[5,"MNAR","Eksikliğin, eksik olan verinin kendisiyle ilişkili olduğu eksik veri türü"],
+[5,"Z-Score","Bir gözlemin ortalamadan kaç standart sapma uzakta olduğunu gösteren ölçü"],
+[5,"IQR","%25 ve %75’lik dilimler arasındaki fark"],
+[5,"Winsorization","Aykırı değerlerin etkisini azaltan dönüştürme yöntemi"],
+[5,"Min-Max normalizasyonu","Değerleri [0, 1] aralığına getiren ölçekleme"],
+[5,"Standartlaştırma","Verileri ortalama 0 ve standart sapma 1 olacak şekilde dönüştürme"],
+[5,"One-hot encoding","Kategorik verileri sayısal forma çeviren kodlama (pd.get_dummies)"],
+[5,"Özellik mühendisliği","Önemli özellikleri seçme veya yeni özellikler yaratma süreci"],
+[5,"Özellik seçimi","Önemsiz özellikleri çıkararak modeli hızlandıran ve aşırı uyumu önleyen adım"],
+[5,"KNNImputer","Eksik değerleri en yakın komşulara göre tahmin eden yöntem"],
+[5,"Kutu grafiği (box plot)","Aykırı değerleri görselleştirmek için kullanılan grafik"],
+[6,"Sınıflandırma","Etiketli veriyle verileri önceden belirlenmiş kategorilere ayırma (denetimli)"],
+[6,"Kümeleme","Etiketsiz verileri doğal benzerliklere göre gruplama (denetimsiz)"],
+[6,"Birliktelik kuralları","Veri setinde sık birlikte görülen öğeleri belirleme tekniği"],
+[6,"Regresyon","Veriler arasındaki ilişkileri modelleyerek sayısal tahmin yapma"],
+[6,"Anomali tespiti","Veri setindeki normalden sapmaları bulma (ör. dolandırıcılık)"],
+[6,"CRISP-DM","Veri madenciliği projelerini altı aşamada yöneten metodoloji"],
+[6,"K-Ortalamalar","Verileri önceden belirlenmiş K sayıda kümeye ayıran algoritma"],
+[6,"DBSCAN","Yoğunluk tabanlı kümeleme algoritması"],
+[6,"Apriori","Sık öğe kümelerini bulan birliktelik kuralı algoritması"],
+[6,"FP-Growth","Büyük veri setlerinde Apriori’den daha hızlı çalışan birliktelik algoritması"],
+[6,"Destek vektör makineleri (SVM)","Verileri ayıran en iyi hiper düzlemi bulmayı hedefleyen algoritma"],
+[6,"Naive Bayes","Bayes teoremine dayalı hızlı ve etkili sınıflandırma yöntemi"],
+[6,"Karar ağaçları","Veriyi dallara ayırarak sınıflandırma yapan algoritma"],
+[6,"Weka","Akademik ve pratik projelerde kullanılan açık kaynaklı veri madenciliği yazılımı"],
+[6,"Market sepeti analizi","Birlikte satın alınan ürünleri keşfeden, birliktelik kurallarına dayalı uygulama"],
+[8,"Hacim (Volume)","Büyük verinin miktarı; petabayt ve exabayt düzeyine ulaşabilir"],
+[8,"Hız (Velocity)","Verinin ne kadar hızlı oluşturulup işlendiği"],
+[8,"Çeşitlilik (Variety)","Verinin farklı tür ve formatlarda olması"],
+[8,"Doğruluk (Veracity)","Verinin güvenilirliği; analiz sonuçlarının doğruluğunu etkiler"],
+[8,"Değer (Value)","Büyük verinin doğru işlendiğinde işletmeye sağladığı katkı"],
+[8,"HDFS","Hadoop’ta veriyi bloklara bölüp farklı düğümlerde dağıtılmış saklayan bileşen"],
+[8,"MapReduce","Büyük veri setlerini Map ve Reduce aşamalarıyla paralel işleyen bileşen"],
+[8,"YARN","Hadoop’ta kaynak yönetimi ve iş zamanlamasını kontrol eden bileşen"],
+[8,"Spark","Bellek içi işleme sayesinde Hadoop’tan çok daha hızlı çalışan platform"],
+[8,"Spark Streaming","Spark’ın gerçek zamanlı veri işleme bileşeni"],
+[8,"MLlib","Spark’ın makine öğrenimi kütüphanesi"],
+[8,"GraphX","Spark’ın graf ve ağ analizi bileşeni"],
+[8,"Apache Kafka","Gerçek zamanlı veri akışlarını işlemek için kullanılan mesajlaşma platformu"],
+[8,"Tableau","Büyük veri görselleştirmesi için yaygın kullanılan araç"],
+[8,"Google BigQuery","Büyük veriyi analiz etmek için bulut tabanlı çözüm"],
+[8,"NoSQL (MongoDB, Cassandra)","Yapılandırılmamış verilerin saklanması ve yönetilmesi için ideal veri tabanları"],
+[8,"ETL","Extract, Transform, Load: veri işleme aşamasındaki işlemler"]
+];
+const $=s=>document.querySelector(s),app=$("#app");
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+const shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const L="ABCDE";
+
+function home(){
+ app.innerHTML=`<div class="hero"><h1>Veri Bilimi ve Analitiği çalışma sitesi</h1><p>Beş şıklı testler, konu anlatımları ve bitmeyen bir soru üreticisi. Ders kitabının 5., 6. ve 8. bölümlerine dayanır.</p></div><div class="grid">`+
+ Object.entries(CH).map(([k,c])=>`<div class="card" style="--cc:${c.c}"><h3>${k}. ${c.t}</h3><p style="color:var(--mut);margin:0">${c.s.length} konu · ${BQ[k].length} kitap sorusu</p><div class="btns"><a class="btn f" href="#/konu/${k}">Konu anlatımı</a><a class="btn" href="#/test/${k}">Bölüm testi</a><a class="btn" href="#/sonsuz/${k}">Sonsuz test</a></div></div>`).join("")+
+ `</div><div class="card" style="margin-top:1rem"><h3>Tüm bölümlerden sonsuz test</h3><p style="margin:0;color:var(--mut)">Soru bankasından her seferinde farklı soru ve farklı şık dizilimi üretilir. Bitmez.</p><div class="btns"><a class="btn f" href="#/sonsuz">Başla</a><a class="btn" href="#/test/hepsi">15 kitap sorusu</a></div></div>`;
+}
+function topic(k){
+ const c=CH[k];if(!c)return home();
+ app.innerHTML=`<p><a href="#/">← Ana sayfa</a></p><div style="--cc:${c.c}"><h1>${k}. ${c.t}</h1><div class="toc">${c.s.map((s,i)=>`<a href="#/konu/${k}" data-i="${i}">${s[0]}</a>`).join("")}</div>`+
+ c.s.map((s,i)=>`<section class="sec" id="s${i}"><h3>${s[0]}</h3>${s[1]}</section>`).join("")+
+ `<div class="btns"><a class="btn f" href="#/test/${k}">Bölüm testine geç</a><a class="btn" href="#/sonsuz/${k}">Sonsuz test</a></div></div>`;
+ app.querySelectorAll(".toc a").forEach(a=>a.onclick=e=>{e.preventDefault();document.getElementById("s"+a.dataset.i).scrollIntoView({behavior:"smooth"})});
+}
+/* Sonsuz soru üretici */
+function gen(ch){
+ const pool=ch?F.filter(f=>f[0]==ch):F;
+ const r=Math.random();
+ if(r<.2){const b=rnd(ch?BQ[ch]:Object.values(BQ).flat());const c=b[1][b[2]];const o=shuf(b[1]);return{q:b[0],o,a:o.indexOf(c),e:"Kitap sonu sorusu."}}
+ const f=rnd(pool),same=pool.filter(x=>x!==f);
+ if(r<.65){const d=shuf(same).slice(0,4).map(x=>x[2]);const o=shuf([f[2],...d]);
+  return{q:`“${f[1]}” aşağıdakilerden hangisini ifade eder?`,o,a:o.indexOf(f[2]),e:`${f[1]}: ${f[2]}.`}}
+ const d=shuf(same).slice(0,4).map(x=>x[1]);const o=shuf([f[1],...d]);
+ return{q:`Aşağıdaki tanım hangi kavrama aittir?\n“${f[2]}”`,o,a:o.indexOf(f[1]),e:`Doğru cevap ${f[1]}.`}
+}
+function quiz(title,getQ,total,color,back){
+ let i=0,sc=0,streak=0,best=0,done=false,cur;
+ const wrap=()=>{
+  if(total&&i>=total){const p=Math.round(sc/total*100);app.innerHTML=`<div style="--cc:${color}"><h1>${title}</h1><div class="card"><h2>${sc} / ${total} doğru (%${p})</h2><p>En uzun doğru serisi: ${best}</p><div class="btns"><button class="btn f" id="re">Tekrar çöz</button><a class="btn" href="#/">Ana sayfa</a></div></div></div>`;$("#re").onclick=()=>{i=sc=streak=best=0;wrap()};return}
+  cur=getQ(i);done=false;
+  app.innerHTML=`<div style="--cc:${color}"><p><a href="${back}">← Geri</a></p><h1>${title}</h1><div class="meta"><span>${total?`Soru ${i+1}/${total}`:`Soru ${i+1}`}</span><span>Doğru: ${sc}</span><span>Seri: ${streak}</span>${total?"":`<span>En iyi seri: ${best}</span>`}</div><div class="bar"><i style="width:${total?i/total*100:Math.min(100,streak*10)}%"></i></div><h3 style="white-space:pre-line">${cur.q}</h3><div id="opts">${cur.o.map((o,j)=>`<button class="opt" data-j="${j}"><b>${L[j]})</b> ${o}</button>`).join("")}</div><div id="fb"></div></div>`;
+  app.querySelectorAll(".opt").forEach(b=>b.onclick=()=>pick(+b.dataset.j));
+ };
+ function pick(j){
+  if(done)return;done=true;
+  const ok=j===cur.a;ok?(sc++,streak++,best=Math.max(best,streak)):streak=0;
+  app.querySelectorAll(".opt").forEach((b,x)=>{b.disabled=true;if(x===cur.a)b.classList.add("ok");else if(x===j)b.classList.add("no")});
+  $("#fb").innerHTML=`<p class="exp"><b style="color:var(--${ok?"ok":"bad"})">${ok?"Doğru.":"Yanlış."}</b> ${cur.e||""}</p><button class="btn f" id="nx">${total&&i+1>=total?"Sonucu gör":"Sonraki soru"}</button>`;
+  $("#nx").focus();$("#nx").onclick=()=>{i++;wrap()};
+ }
+ wrap();
+}
+function route(){
+ const [,p,k]=location.hash.split("/");
+ document.querySelectorAll("header a").forEach(a=>a.classList.remove("on"));
+ window.scrollTo(0,0);
+ if(p==="konu")topic(k);
+ else if(p==="test"){
+  const qs=k==="hepsi"?shuf(Object.values(BQ).flat()):BQ[k];
+  if(!qs)return home();
+  const list=qs.map(b=>{const c=b[1][b[2]],o=shuf(b[1]);return{q:b[0],o,a:o.indexOf(c),e:`Doğru cevap: ${c}`}});
+  quiz(k==="hepsi"?"Tüm kitap soruları":`${k}. ${CH[k].t} testi`,n=>list[n],list.length,k==="hepsi"?"var(--ac)":CH[k].c,"#/");
+ }
+ else if(p==="sonsuz"){$("#n-inf").classList.add("on");
+  const ch=CH[k]?k:0;
+  quiz(ch?`Sonsuz test · ${CH[ch].t}`:"Sonsuz test · Tüm bölümler",()=>gen(ch),0,ch?CH[ch].c:"var(--ac)","#/");
+  const h=document.createElement("p");h.innerHTML=`Bölüm: ${["", "5","6","8"].map(x=>x?`<a href="#/sonsuz/${x}">${x}</a>`:"").join(" · ")} · <a href="#/sonsuz">tümü</a>`;h.style.color="var(--mut)";app.appendChild(h);
+ }
+ else{$("#n-home").classList.add("on");home()}
+}
+addEventListener("hashchange",route);route();
+</script>
+</body>
+</html>
