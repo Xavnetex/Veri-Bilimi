@@ -1,3 +1,7 @@
+Claude
+
+
+Index · HTML
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -43,10 +47,12 @@ th{background:var(--bg)}
 .meta{display:flex;gap:1.2rem;flex-wrap:wrap;color:var(--mut);font-weight:600}
 select{font:inherit;padding:.4rem;border-radius:6px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
 .exp{margin-top:.6rem;color:var(--mut)}
+.tag{position:fixed;top:3px;right:8px;z-index:10;font:800 10px/1 system-ui,sans-serif;letter-spacing:.08em;color:var(--mut);opacity:.35;pointer-events:none;user-select:none}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
+<span class="tag" aria-hidden="true">2707</span>
 <header><b>Veri Bilimi ve Analitiği</b><a href="#/" id="n-home">Ana sayfa</a><a href="#/sonsuz" id="n-inf">Sonsuz test</a></header>
 <main id="app"></main>
 <script>
@@ -156,7 +162,7 @@ const $=s=>document.querySelector(s),app=$("#app");
 const rnd=a=>a[Math.floor(Math.random()*a.length)];
 const shuf=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
 const L="ABCDE";
-
+ 
 function home(){
  app.innerHTML=`<div class="hero"><h1>Veri Bilimi ve Analitiği çalışma sitesi</h1><p>Beş şıklı testler, konu anlatımları ve bitmeyen bir soru üreticisi. Ders kitabının 5., 6. ve 8. bölümlerine dayanır.</p></div><div class="grid">`+
  Object.entries(CH).map(([k,c])=>`<div class="card" style="--cc:${c.c}"><h3>${k}. ${c.t}</h3><p style="color:var(--mut);margin:0">${c.s.length} konu · ${BQ[k].length} kitap sorusu</p><div class="btns"><a class="btn f" href="#/konu/${k}">Konu anlatımı</a><a class="btn" href="#/test/${k}">Bölüm testi</a><a class="btn" href="#/sonsuz/${k}">Sonsuz test</a></div></div>`).join("")+
@@ -219,3 +225,5 @@ addEventListener("hashchange",route);route();
 </script>
 </body>
 </html>
+ 
+Claude finished the response
